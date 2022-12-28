@@ -3,6 +3,8 @@ from modules import functions
 
 todos = functions.get_todos()
 
+st.set_page_config(layout="wide")
+
 
 def add_todo():
     item = st.session_state["new_todo"] + "\n"
@@ -12,7 +14,11 @@ def add_todo():
 
 st.title("My Todo App")
 st.subheader("This is a demo app.")
-st.write("This app is to increase the productivity.")
+st.write("This app is to increase the <b>productivity</b>.",
+         unsafe_allow_html=True)
+
+st.text_input(label="", placeholder="Add a new todo...",
+              on_change=add_todo, key='new_todo')
 
 for index, todo in enumerate(todos):
     checkbox = st.checkbox(todo, key=todo)
@@ -20,7 +26,3 @@ for index, todo in enumerate(todos):
         todos.pop(index)
         functions.write_todos(todos)
         st.experimental_rerun()
-
-
-st.text_input(label="", placeholder="Add a new todo...",
-              on_change=add_todo, key='new_todo')
