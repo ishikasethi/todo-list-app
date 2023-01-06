@@ -3,7 +3,7 @@ from modules import functions
 
 todos = functions.get_todos()
 
-st.set_page_config(layout="wide")
+# st.set_page_config(layout="wide")
 
 
 def add_todo():
@@ -12,10 +12,9 @@ def add_todo():
     functions.write_todos(todos)
 
 
-st.title("My Todo App")
-st.subheader("This is a demo app.")
-st.write("This app is to increase the <b>productivity</b>.",
-         unsafe_allow_html=True)
+st.title("The Todo-List App")
+st.subheader("This app is to increase the productivity.")
+st.write("Create new todos, edit the existing ones and mark complete once the todo is completed.")
 
 st.text_input(label="", placeholder="Add a new todo...",
               on_change=add_todo, key='new_todo')
